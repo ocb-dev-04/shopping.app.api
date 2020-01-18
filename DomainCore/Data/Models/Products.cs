@@ -9,16 +9,16 @@ namespace DomainCore.Data.Models
 
         [Key]
         public int Id { get; set; }
+        [ForeignKey("Seller")]
+        public int SellerId { get; set; }
         [Required]
-        public string BigImgUrl { get; set; }
+        public string[] BigImgUrl { get; set; }
         [Required]
         public string ShortImgUrl { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        [ForeignKey("Seller")]
-        public int SellerName { get; set; }
         [Required]
         public int Quantity { get; set; }
         [Required]

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DomainCore.Core.ModelsDTO
+namespace DomainCore.Core.ModelsDTO.Sellers
 {
-    public class ProductsDTO
+    public class CreateSellersDTO
     {
     }
 }

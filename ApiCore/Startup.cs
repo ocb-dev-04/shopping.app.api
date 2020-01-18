@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DomainCore.Config;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,8 @@ namespace ApiCore
             services.AddDI();// all di
             services.AddDBInfo(Configuration);// configure db services
             services.AddJwtAuth(Configuration);// configure jwt and auth services
+
+            services.AddAutoMapper(typeof(Startup));// add automapper services
 
             services.AddControllers().AddJsonOptions(options =>
             {

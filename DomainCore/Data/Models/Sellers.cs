@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DomainCore.Data.Identity;
 
@@ -8,12 +9,13 @@ namespace DomainCore.Data.Models
     {
         #region Properties
 
+        [Key]
         public int Id { get; set; }
         [ForeignKey("Profile")]
         public int ProfileId { get; set; }// with profile info will have name, location, and more
-        public List<Products> Products { get; set; }
+        public ICollection<Products> Products { get; set; }
 
-        #region Properties
+        #region ForeingKey's
 
         public ProfileInfo Profile { get; set; }
 

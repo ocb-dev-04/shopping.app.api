@@ -1,10 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DomainCore.Core.ModelsDTO.Sellers;
+using DomainCore.Data.Models;
+using AutoMapper;
 
 namespace DomainCore.Core.Mappers
 {
-    public class SellersMapperDTO
+    public class SellersMapperDTO : Profile
     {
+        #region Construct
+
+        public SellersMapperDTO()
+        {
+            // dto to entity
+            CreateMap<SellersDTO, Sellers>();
+            // entity to dto
+            CreateMap<Sellers, SellersDTO>();
+            // create to entity
+            CreateMap<CreateSellersDTO, Sellers>();
+        }
+
+        #endregion
     }
 }
