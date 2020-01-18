@@ -1,12 +1,10 @@
-﻿using DomainCore.Data.DbAppContext;
-using DomainCore.Data.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
+using DomainCore.Data.DbAppContext;
+using DomainCore.Data.Identity;
 
 namespace DomainCore.Config
 {

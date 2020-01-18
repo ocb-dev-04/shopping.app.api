@@ -3,12 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainCore.Data.Models
 {
-    public class Products
+    public class Products : SameProps
     {
         #region Properties
 
-        [Key]
-        public int Id { get; set; }
         [ForeignKey("Seller")]
         public int SellerId { get; set; }
         [Required]

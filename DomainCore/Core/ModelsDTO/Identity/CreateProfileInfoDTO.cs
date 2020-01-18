@@ -29,14 +29,14 @@ namespace DomainCore.Core.ModelsDTO.Identity
         [Required]
         public string Country { get; set; }
         // fecha no es requerida ya que es asignada en el constructor basandose en el horario del servidor
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateServerTime { get; set; }
 
         #endregion
 
         #region Construct
 
         public CreateProfileInfoDTO()
-            => CreateDate = DateTime.Now;
+            => CreateServerTime = DateTime.Now;
 
         #endregion
     }

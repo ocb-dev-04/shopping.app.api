@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
 
 namespace DomainCore.Data.Identity
 {
     public class UserAppIdentity : IdentityUser
     {
-        #region Properties
+        // if wanna add some properties else you can add here:
 
-        [Required]
-        public string Role { get; set; }
-
-        #endregion
+        // the properties ihnerit are:
+        // username, email, password, phone, confirmEmail, confirmPhone, etc...
     }
 }

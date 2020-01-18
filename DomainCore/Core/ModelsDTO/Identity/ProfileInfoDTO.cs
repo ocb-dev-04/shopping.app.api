@@ -1,14 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainCore.Core.ModelsDTO.Identity
 {
-    public class ProfileInfoDTO
+    public class ProfileInfoDTO : SamePropsDTO
     {
         #region Properties
 
-        [Required]
-        public int Id { get; set; }
         [Required]
         public string UserId { get; set; }
         [Required]
@@ -30,15 +27,6 @@ namespace DomainCore.Core.ModelsDTO.Identity
         public string Location { get; set; }
         [Required]
         public string Country { get; set; }
-        // fecha no es requerida ya que es asignada en el constructor basandose en el horario del servidor
-        public DateTime CreateDate { get; set; }
-
-        #endregion
-
-        #region Construct
-
-        public ProfileInfoDTO()
-            => CreateDate = DateTime.Now;
 
         #endregion
     }

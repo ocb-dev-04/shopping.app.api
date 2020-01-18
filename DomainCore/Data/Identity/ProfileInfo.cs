@@ -1,14 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainCore.Data.Identity
 {
-    public class ProfileInfo
+    public class ProfileInfo : SameProps
     {
         #region Properties
 
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string UserId { get; set; }
         [Required]
@@ -23,9 +20,6 @@ namespace DomainCore.Data.Identity
         public string Location { get; set; }
         [Required]
         public string Country { get; set; }
-        // fecha no es requerida ya que es asignada en el constructor basandose en el horario del servidor
-        [Required]
-        public DateTime CreateDate { get; set; }
 
         #endregion
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace DomainCore.Core.ModelsDTO.Products
 {
@@ -32,7 +31,8 @@ namespace DomainCore.Core.ModelsDTO.Products
         [Required]
         public bool FreeSend { get; set; }
 
-        #endregion
+        public DateTime CreateServerTime { get; set; }
 
+        #endregion
     }
 }
