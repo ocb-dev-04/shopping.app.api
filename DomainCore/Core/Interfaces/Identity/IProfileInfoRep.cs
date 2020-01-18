@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DomainCore.Config
+namespace DomainCore.Core.Interfaces.Identity
 {
-    public static class ConfigAuthServices
+    public interface IProfileInfoRep
     {
     }
 }

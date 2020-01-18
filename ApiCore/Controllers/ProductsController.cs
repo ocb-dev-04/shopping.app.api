@@ -11,17 +11,17 @@ namespace ApiCore.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
 
-        }
+        //}
 
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
 
-        }
+        //}
 
         [HttpPost]
         public void Post([FromBody] string value)

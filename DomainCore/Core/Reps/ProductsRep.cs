@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DomainCore.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DomainCore.Core.Reps
 {
-    public class ProductsRep
+    public class ProductsRep : IProductsRep
     {
     }
 }
