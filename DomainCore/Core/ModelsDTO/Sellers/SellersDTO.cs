@@ -7,6 +7,7 @@ namespace DomainCore.Core.ModelsDTO.Sellers
     {
         #region Properties
 
+        public int Id { get; set; }
         public int ProfileId { get; set; }// with profile info will have name, location, and more
         public ICollection<ProductsDTO> Products { get; set; }
 

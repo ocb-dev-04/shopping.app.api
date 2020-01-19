@@ -20,7 +20,7 @@ namespace DomainCore.Core.ModelsDTO.Products
         [Required]
         [MinLength(5, ErrorMessage = "Description need 5 characters or more")]
         [MaxLength(400, ErrorMessage = "Description is so long")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
         [Required]
         public int SellerId { get; set; }
         [Required]

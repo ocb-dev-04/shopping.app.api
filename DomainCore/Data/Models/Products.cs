@@ -26,6 +26,7 @@ namespace DomainCore.Data.Models
 
         #region ForeignKey's
 
+        [NotMapped]
         public Sellers Seller { get; set; }
 
         #endregion

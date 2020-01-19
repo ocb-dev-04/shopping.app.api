@@ -15,6 +15,7 @@ namespace DomainCore.Data.Models
 
         #region ForeingKey's
 
+        [NotMapped]
         public ProfileInfo Profile { get; set; }
 
         #endregion

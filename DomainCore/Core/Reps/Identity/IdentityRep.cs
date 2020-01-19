@@ -12,6 +12,7 @@ using DomainCore.Core.Interfaces.Identity;
 using DomainCore.Core.ModelsDTO.Identity.JWT;
 using DomainCore.Core.ModelsDTO.Identity.Login;
 using DomainCore.Core.ModelsDTO.Identity.UserAppIdentity;
+using Microsoft.AspNetCore.Identity;
 
 namespace DomainCore.Core.Reps.Identity
 {

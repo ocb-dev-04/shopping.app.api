@@ -7,8 +7,8 @@ namespace DomainCore.Core.Interfaces.Identity
     {
         #region Get's Methods
 
-        Task<ProfileInfoDTO> GetRrofileInfoById(int id);
-        Task<ProfileInfoDTO> GetRrofileInfoByName(string name);
+        Task<ProfileInfoDTO> GetProfileInfoById(int id);
+        Task<ProfileInfoDTO> GetProfileInfoByName(string name);
 
         #endregion
 
