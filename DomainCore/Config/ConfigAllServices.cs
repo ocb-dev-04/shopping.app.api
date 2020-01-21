@@ -11,11 +11,6 @@ namespace DomainCore.Config
         {
             #region Identity
 
-            //  DI for identity (CRUD Users)
-            services.AddScoped<
-                Core.Interfaces.Identity.IIdentityRep,
-                Core.Reps.Identity.IdentityRep>();
-
             services.AddScoped<
                 Core.Interfaces.Identity.IProfileInfoRep,
                 Core.Reps.Identity.ProfileInfoRep>();

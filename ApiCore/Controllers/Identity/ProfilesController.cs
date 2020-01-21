@@ -1,33 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+using DomainCore.Core.Interfaces.Identity;
+using DomainCore.Core.ModelsDTO.Identity;
 
 namespace ApiCore.Controllers.Identity
 {
-    /*
-     Este endpoint es para modificar la informacion personal del usuario:
-
-     nombre, apellido, localizacion, numero de telefono, y obviamente 
-     tiene relacion con la identitdad de Identity pues de ella toma el id, y el correo
-    */
-    [Route("api/[controller]")]
+    [Route("v1/api/[controller]")]
     [ApiController]
     public class ProfilesController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        #region Properties
+
+        private readonly IProfileInfoRep _profileInfoRep;
+        private readonly ILogger _logger;
+
+        #endregion
+
+        #region Construct
+
+        public ProfilesController(
+            IProfileInfoRep profileInfoRep,
+            ILogger<ProfilesController> logger)
         {
-            return new string[] { "value1", "value2" };
+            _profileInfoRep = profileInfoRep;
+            _logger = logger;
         }
 
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        #endregion
+
+        #region Methods
+
+        #region Get's Methods
+
+        [HttpGet("profileId={id}", Name = "GetProfileById")]
+        public async Task<ActionResult<ProfileInfoDTO>> GetById([FromRoute] int profileId)
         {
-            return "value";
+            _logger.LogInformation($"Acces to profileInfo find profile with ID => {profileId}");
+            if (profileId < 0)
+                return BadRequest("ProfileId can't be less of 0");
+
+            var response = await _profileInfoRep.GetProfileInfoById(profileId);
+            if (response == null)
+                return NotFound();
+
+            return Ok(response);
         }
+
+        #endregion
+
+        #region CRUD Methods
 
         [HttpPost]
         public void Post([FromBody] string value)
@@ -43,5 +67,9 @@ namespace ApiCore.Controllers.Identity
         public void Delete(int id)
         {
         }
+
+        #endregion
+
+        #endregion
     }
 }

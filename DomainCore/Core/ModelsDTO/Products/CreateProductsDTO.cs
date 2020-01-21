@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DomainCore.Core.ModelsDTO.Products
@@ -10,7 +11,7 @@ namespace DomainCore.Core.ModelsDTO.Products
         #region Properties
 
         [Required]
-        public List<string> BigImgUrl { get; set; }
+        public string BigImgUrl { get; set; }
         [Required]
         public string ShortImgUrl { get; set; }
         [Required]

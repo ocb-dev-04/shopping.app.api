@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainCore.Data.Models
@@ -10,7 +11,7 @@ namespace DomainCore.Data.Models
         [ForeignKey("Seller")]
         public int SellerId { get; set; }
         [Required]
-        public string[] BigImgUrl { get; set; }
+        public string BigImgUrl { get; set; }
         [Required]
         public string ShortImgUrl { get; set; }
         [Required]

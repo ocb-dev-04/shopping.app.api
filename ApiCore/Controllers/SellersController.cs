@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiCore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/api/[controller]")]
     [ApiController]
     public class SellersController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace ApiCore.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetSellersById")]
         public string Get(int id)
         {
             return "value";

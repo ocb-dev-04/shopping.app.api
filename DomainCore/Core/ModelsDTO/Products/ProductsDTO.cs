@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DomainCore.Core.ModelsDTO.Products
@@ -11,7 +10,7 @@ namespace DomainCore.Core.ModelsDTO.Products
         [Required]
         public int Id { get; set; }
         [Required]
-        public List<string> BigImgUrl { get; set; }
+        public string BigImgUrl { get; set; }
         [Required]
         public string ShortImgUrl { get; set; }
         [Required]

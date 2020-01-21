@@ -38,8 +38,7 @@ namespace ApiCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDI();// all di
-            services.AddDBInfo(Configuration);// configure db services
-            services.AddJwtAuth(Configuration);// configure jwt and auth services
+            services.AddDBInfo();// configure db services
 
             services.AddAutoMapper(typeof(Startup));// add automapper services
 
@@ -47,6 +46,8 @@ namespace ApiCore
             {
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             });
+
+            //services.AddLocalSwaggerConf();
         }
 
         #endregion
@@ -65,6 +66,8 @@ namespace ApiCore
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //app.AppLocalSwaggerConf();
 
             app.UseEndpoints(endpoints =>
             {

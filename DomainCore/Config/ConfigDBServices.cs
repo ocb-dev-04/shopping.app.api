@@ -13,8 +13,7 @@ namespace DomainCore.Config
         #region DBConnect
 
         public static void AddDBInfo(
-            this IServiceCollection services,
-            IConfiguration Configuration)
+            this IServiceCollection services)
         {
             //  config context to DataBase
             //services.AddDbContext<AppDbContext>(
@@ -23,22 +22,6 @@ namespace DomainCore.Config
             // config context to MemoryDataBase (just for tests)
             services.AddDbContext<AppDbContext>(
                 option => option.UseInMemoryDatabase("ShoppingAppTestDB"));
-
-            //  identity config (to create users)
-            services.AddIdentity<UserAppIdentity, IdentityRole>(
-                    option =>
-                    {
-                        //  for email confirmation
-                        option.User.RequireUniqueEmail = true;
-
-                        //  password config
-                        option.Password.RequireDigit = true;
-                        option.Password.RequiredLength = 6;
-                        option.Password.RequireNonAlphanumeric = false;
-                        option.Password.RequireUppercase = false;
-                        option.Password.RequireLowercase = true;
-                    }
-                ).AddDefaultTokenProviders();
         }
 
         #endregion
