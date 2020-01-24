@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace ApiCore
@@ -13,14 +15,44 @@ namespace ApiCore
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            
+            CreateWebHostBuilder(args)
+                .UseKestrel()
+                .Build()
+                .Run();
+               
+            /*
+            try
+            {
+                var host = CreateWebHostBuilder(args).Build();
+                using (var scope = host.Services.CreateScope())
+                {
+                    var config = scope.ServiceProvider
+                        .GetRequiredService<IConfiguration>();
+
+                    Log.Logger = new LoggerConfiguration()
+                        .ReadFrom.Configuration(config)
+                        .CreateLogger();
+
+
+                }
+                Log.Information("Starting web host");
+                host.Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, ex.Message);
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+            */
+
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }

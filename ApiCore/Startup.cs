@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using DomainCore.Config;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Serialization;
+
+using AutoMapper;
+
+using ApiCore.ConfigServices;
 
 namespace ApiCore
 {
@@ -35,44 +29,97 @@ namespace ApiCore
 
         #region ConfigureServices
 
+        // for local request
+        //readonly string LocalhostOrigins = "_localhostOrigins";
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDI();// all di
-            services.AddDBInfo();// configure db services
+            services.AddDI();//  DI
+            services.AddDBInfo(Configuration);//  DB
+            services.AddJwtAuth(Configuration);//  JWT
+            services.AddAutoMapper(typeof(Startup));   //  automapper (deprecated)
 
-            services.AddAutoMapper(typeof(Startup));// add automapper services
+            // JUST DEVELOP MODE
+            services.AddCors();
 
-            services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services.AddLocalSwaggerConf();
+            //  config json result on mvc controllers
+            services.AddMvc().AddJsonOptions(ConfigureJson);
+
+            // config swagger
+            services.AddSwagger();
+        }
+
+        //  just for configure json result 
+        private void ConfigureJson(MvcJsonOptions obj)
+        {
+            obj.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
 
         #endregion
 
         #region Configure
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                #region Swagger Config
+
+                //app.UseSwagger(); // default config
+                //app.UseSwagger(
+                ////    options =>
+                ////{
+                ////    options.RouteTemplate = "swagger/{documentName}/swagger.json";
+                ////}
+                //);
+                //app.UseSwaggerUI(c =>
+                //    {
+                //        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Description");
+                //        //c.InjectStylesheet("/swagger/theme-material.css");
+                //        c.RoutePrefix = "api-docs/swagger";
+                //    }
+                //);
+
+                // Enable middleware to serve generated Swagger as a JSON endpoint.
+                app.UseSwagger();
+
+                // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+                // specifying the Swagger JSON endpoint.
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("swagger/v1/swagger.json", "My API V1");
+                    c.InjectStylesheet("swagger");
+                });
+
+                #endregion
+
+                #region Cors Config
+
+                app.UseCors(x =>
+                {
+                    x.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                });
+
+                #endregion
+            }
+            else
+            {
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseAuthentication();
+            app.UseStaticFiles();
+            app.UseMvc();
 
-            app.UseAuthorization();
-
-            //app.AppLocalSwaggerConf();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
         }
 
         #endregion

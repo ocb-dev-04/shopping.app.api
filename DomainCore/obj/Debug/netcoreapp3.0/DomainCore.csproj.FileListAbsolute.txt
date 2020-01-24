@@ -1,8 +1,0 @@
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp3.0\DomainCore.deps.json
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp3.0\DomainCore.dll
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp3.0\DomainCore.AssemblyInfoInputs.cache
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp3.0\DomainCore.AssemblyInfo.cs
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp3.0\DomainCore.pdb
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp3.0\DomainCore.dll
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp3.0\DomainCore.pdb
-C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp3.0\DomainCore.csprojAssemblyReference.cache
