@@ -1,15 +1,17 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using DomainCore.Core.Interfaces.Identity;
 using DomainCore.Core.EntitiesDTO.Identity;
 
 namespace ApiCore.Controllers.Identity
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Route("v1/api/[controller]")]
     public class AccountsController : Controller
     {
         #region Properties
@@ -49,9 +51,7 @@ namespace ApiCore.Controllers.Identity
 
         #region Register
 
-        #region Client
-
-        [Route("register_client")]
+        [Route("register")]
         [HttpPost]
         public async Task<ActionResult> CreateUser([FromBody] CreateAppIdentityUserDTO create)
         {
@@ -71,65 +71,10 @@ namespace ApiCore.Controllers.Identity
 
         #endregion
 
-        #region Partner
-
-        [Authorize(Roles = "SuperAdminMasterOwner")]
-        [Route("register_partner")]
-        [HttpPost]
-        public async Task<ActionResult> CreatePartner([FromBody] CreateAppIdentityUserDTO create)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var confirm = await _identityUserRep.ConfirmEmailAsync(create.Email);
-            if (!confirm)
-                return BadRequest("Email is used");
-
-            var result = await _identityUserRep.CreatePartnerAsync(create);
-            if (result == null)
-                return BadRequest("Some error ocurred while try create your account");
-
-            return Ok(result);
-        }
-
-        #endregion
-
-        #region Admin
-
-        /*
-         * 
-         * uncomment this just for create a admin user, when you mae deploy delete this code and 
-         * code relations this in interfaces and reps, the rason is for nobody can make other admin user
-         * 
-         * 
-
-        [Route("register_admin")]
-        [HttpPost]
-        public async Task<ActionResult> CreateAdmin([FromBody] CreateAppIdentityUserDTO create)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var confirm = await _identityUserRep.ConfirmEmailAsync(create.Email);
-            if (!confirm)
-                return BadRequest("Email is used");
-
-            var result = await _identityUserRep.CreateAdminAsync(create);
-            if (result == null)
-                return BadRequest("Some error ocurred while try create your account");
-
-            return Ok(result);
-        }
-
-        */
-
-        #endregion
-
-        #endregion
-
         #region Delete Methods
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Route("delete-account")]
         [HttpDelete]
         public async Task<ActionResult> DeleteUser()
         {
@@ -142,7 +87,8 @@ namespace ApiCore.Controllers.Identity
             return Ok("Account delete succesful");
         }
 
-        
         #endregion
+    
+        // end controller
     }
 }

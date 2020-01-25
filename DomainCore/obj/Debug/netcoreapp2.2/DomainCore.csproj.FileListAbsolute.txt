@@ -38,3 +38,11 @@ C:\Users\DELL\Desktop\ShoppAPI\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.pdb
 C:\Users\DELL\Desktop\ShoppAPI\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.deps.json
 C:\Users\DELL\Desktop\ShoppAPI\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.dll
 C:\Users\DELL\Desktop\ShoppAPI\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.pdb
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.csprojAssemblyReference.cache
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.AssemblyInfoInputs.cache
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.AssemblyInfo.cs
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.dll
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Debug\netcoreapp2.2\DomainCore.pdb
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.deps.json
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.dll
+C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\bin\Debug\netcoreapp2.2\DomainCore.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\ShoppAPI\\ApiCore\\ApiCore.csproj": {}
+    "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\ShoppAPI\\ApiCore\\ApiCore.csproj": {
+    "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\ApiCore\\ApiCore.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj",
         "projectName": "ApiCore",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\ApiCore\\ApiCore.csproj",
+        "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\ApiCore\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\DomainCore.csproj": {
-                "projectPath": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\DomainCore.csproj"
+              "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj": {
+                "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj"
               }
             }
           }
@@ -67,6 +67,10 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[4.0.1, )"
@@ -86,14 +90,14 @@
         }
       }
     },
-    "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\DomainCore.csproj": {
+    "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\DomainCore.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj",
         "projectName": "DomainCore",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\DomainCore.csproj",
+        "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\ShoppAPI\\DomainCore\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

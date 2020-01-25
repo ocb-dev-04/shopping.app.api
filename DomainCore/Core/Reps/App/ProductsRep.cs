@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,13 @@ namespace DomainCore.Core.Reps.App
             => await _appDbContext
                             .Products
                             .ProjectTo<ProductsDTO>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
+
+        public async Task<List<ProductsDTO>> GetByNameAsync(string productName)
+            => await _appDbContext
+                            .Products
+                            .ProjectTo<ProductsDTO>(_mapper.ConfigurationProvider)
+                            .Where(p => p.Name.Equals(productName))
                             .ToListAsync();
 
         public async Task<ProductsDTO> GetByIdAsync(int productId)

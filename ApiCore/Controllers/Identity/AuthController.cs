@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using DomainCore.Core.Interfaces.Identity;
 using DomainCore.Core.EntitiesDTO.Identity;
 
 namespace ApiCore.Controllers.Identity
 {
-    [Route("api/[controller]")]
+    [Route("v1/api/[controller]")]
     public class AuthController : Controller
     {
         #region Properties
@@ -68,23 +68,6 @@ namespace ApiCore.Controllers.Identity
             {
                 token = auth.Token
             });
-        }
-
-        #endregion
-
-        #region LogOut
-
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [Route("logout")] // logout from anywhere
-        [HttpPost]
-        public async Task<ActionResult> LogOut()
-        {
-            //  first delete JWT
-
-            //  then logout
-            await _identityUserRep.LogoutAsync();
-
-            return Ok("You logout");
         }
 
         #endregion
