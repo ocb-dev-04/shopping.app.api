@@ -9,6 +9,7 @@ using DomainCore.Core.EntitiesDTO.Identity;
 
 namespace ApiCore.Controllers.Identity
 {
+    [Produces("application/json")]
     [Route("v1/api/[controller]")]
     public class AuthController : Controller
     {
@@ -36,14 +37,23 @@ namespace ApiCore.Controllers.Identity
 
         #region Login and Token
 
-        [Route("auth_user")] // login from website
+        /// <summary>
+        /// PUBLICO. Endpoint para acceder y por ende solicitar un JWT. (JWT para web, vence en horas)
+        /// </summary>
+        /// <param name="createWebToken"></param>
+        /// <returns></returns>
+        /// <response code="200">El logeo fue un exito y se trae un token.</response>
+        /// <response code="400">Esas credenciales no son validas.</response> 
+        [Route("auth_user_web")] // login from website
         [HttpPost]
-        public async Task<ActionResult> LoginAndToken([FromBody] Login createToken)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> LoginAndToken([FromBody] Login createWebToken)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var auth = await _identityUserRep.AuthUserWebAsync(createToken);
+            var auth = await _identityUserRep.AuthUserWebAsync(createWebToken);
             if (auth == null)
                 return NotFound("Some error ocurred while try create the token");
 
@@ -53,14 +63,23 @@ namespace ApiCore.Controllers.Identity
             });
         }
 
+        /// <summary>
+        /// PUBLICO. Endpoint para acceder y por ende solicitar un JWT. Endpoint para acceder y por ende solicitar un JWT. (JWT para web, vence en horas)
+        /// </summary>
+        /// <param name="createFixedToken"></param>
+        /// <returns></returns>
+        /// <response code="200">El logeo fue exitoso y trajo un token.</response>
+        /// <response code="400">Esas credenciales no son validas.</response>
         [Route("auth_user_fixed")] // login from desktop or app mobile
         [HttpPost]
-        public async Task<ActionResult> LoginAndTokenFixed([FromBody] Login createToken)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> LoginAndTokenFixed([FromBody] Login createFixedToken)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var auth = await _identityUserRep.AuthUserFixedAsync(createToken);
+            var auth = await _identityUserRep.AuthUserFixedAsync(createFixedToken);
             if (auth == null)
                 return NotFound("Some error ocurred while try create the token");
 

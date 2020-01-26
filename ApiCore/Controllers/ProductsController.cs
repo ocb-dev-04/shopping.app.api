@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,6 +12,7 @@ using DomainCore.Core.Interfaces.App;
 namespace ApiCore.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Produces("application/json")]
     [Route("v1/api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -36,11 +36,19 @@ namespace ApiCore.Controllers
 
         #endregion
 
-        #region Methods
-
         #region Get's methods
 
-        [HttpGet()]
+        /// <summary>
+        /// AUTORIZADO. Accede a todos los productos.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Accede a TODOS los productos de los vendedores.</response>
+        /// <response code="404">No encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<IEnumerable<ProductsDTO>>> GetAll()
         {
             var response = await _productsRep.GetAllAsync();
@@ -50,7 +58,18 @@ namespace ApiCore.Controllers
             return Ok(response);
         }
 
-        [HttpGet("product-name={productName}")]
+        /// <summary>
+        /// AUTORIZADO. Accede a todos los productos que tengan en comun el nombre.
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <returns></returns>
+        /// <response code="200">Accede a TODOS los productos de los vendedores que tengan en comun el nombre.</response>
+        /// <response code="404">No encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
+        [HttpGet("product_name={productName}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<ProductsDTO>> GetByName([FromRoute] string productName)
         {
             if (string.IsNullOrEmpty(productName))
@@ -63,7 +82,18 @@ namespace ApiCore.Controllers
             return Ok(response);
         }
 
-        [HttpGet("product-id={productId}")]
+        /// <summary>
+        /// AUTORIZADO. Accede al producto que pertenece el ID enviado en la ruta.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="200">Accede al producto con el ID especificado.</response>
+        /// <response code="404">No encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
+        [HttpGet("product_id={productId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<ProductsDTO>> GetById([FromRoute] int productId)
         {
             var response = await _productsRep.GetByIdAsync(productId);
@@ -77,7 +107,18 @@ namespace ApiCore.Controllers
 
         #region CRUD
 
+        /// <summary>
+        /// AUTORIZADO. Crea un producto, para su venta.
+        /// </summary>
+        /// <param name="create"></param>
+        /// <returns></returns>
+        /// <response code="200">Crea un producto.</response>
+        /// <response code="400">Los datos no son validos.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<ProductsDTO>> CreateProducts([FromBody] CreateProductsDTO create)
         {
             if (!ModelState.IsValid)
@@ -90,8 +131,20 @@ namespace ApiCore.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// AUTORIZADO. Actualiza un producto.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="update"></param>
+        /// <returns></returns>
+        /// <response code="200">Actualiza un producto.</response>
+        /// <response code="400">Los datos no son validos.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpPut]
-        [Route("product-id={productId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Route("product_id={productId}")]
         public async Task<IActionResult> UpdateProducts([FromRoute] int productId, [FromBody] UpdateProductsDTO update)
         {
             if (!ModelState.IsValid)
@@ -107,8 +160,19 @@ namespace ApiCore.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// AUTORIZADO. Borrar un producto en base a su ID.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="200">Elimina un producto.</response>
+        /// <response code="400">Los datos no son validos.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpDelete]
-        [Route("product-id={productId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        [Route("product_id={productId}")]
         public async Task<IActionResult> DeleteProducts([FromRoute] int productId)
         {
             var response = await _productsRep.DeleteAsync(productId);
@@ -120,6 +184,6 @@ namespace ApiCore.Controllers
 
         #endregion
 
-        #endregion
+        // end controller
     }
 }

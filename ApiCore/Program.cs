@@ -17,38 +17,8 @@ namespace ApiCore
         {
             
             CreateWebHostBuilder(args)
-                .UseKestrel()
                 .Build()
                 .Run();
-               
-            /*
-            try
-            {
-                var host = CreateWebHostBuilder(args).Build();
-                using (var scope = host.Services.CreateScope())
-                {
-                    var config = scope.ServiceProvider
-                        .GetRequiredService<IConfiguration>();
-
-                    Log.Logger = new LoggerConfiguration()
-                        .ReadFrom.Configuration(config)
-                        .CreateLogger();
-
-
-                }
-                Log.Information("Starting web host");
-                host.Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, ex.Message);
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-            */
-
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

@@ -20,16 +20,7 @@ namespace DomainCore.Core.Interfaces.Identity
         #region Create/Update/Disable
 
         Task<AppIdentityUserDTO> CreateUserAsync(CreateAppIdentityUserDTO create);
-        Task<AppIdentityUserDTO> CreatePartnerAsync(CreateAppIdentityUserDTO create);
-
-        /*
-         * this method is for create admin user, when you need create admin uncomment, 
-         * when you make deploy delete this method
-         * 
-         * 
-        Task<AppIdentityUserDTO> CreateAdminAsync(CreateAppIdentityUserDTO create);
-        */
-
+        
         Task<bool> DeleteUserAsync(string authUserId);
 
         #endregion

@@ -3,9 +3,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
+
 using DomainCore.Data.Entities.Identity;
 using DomainCore.Core.EntitiesDTO.Identity;
 using DomainCore.Core.Interfaces.Identity;
@@ -129,121 +131,6 @@ namespace DomainCore.Core.Reps.Identity
 
         #endregion
 
-        #region Partner
-
-        public async Task<AppIdentityUserDTO> CreatePartnerAsync(CreateAppIdentityUserDTO create)
-        {
-            //  take the appsetting value to role and asign to a var
-            string role = _configuration["UserRoles:Partner"];
-            //  if user send some role, change the object value to null, cero, nothing
-            create.RoleName = "";
-
-            #region Convert to Identity class
-
-            var user = new AppIdentityUser
-            {
-                FullName = create.FullName,
-                Email = create.Email,
-                UserName = create.Email,
-                PhoneNumber = create.Phone,
-                //  add default role
-                Role = role
-            };
-
-            #endregion
-
-            var result = await _userManager.CreateAsync(user, create.Password);
-            if (!result.Succeeded)
-                throw new ArgumentNullException(nameof(result));
-
-            //  find the user to add role and return the id
-            var userCreated = await _userManager.FindByEmailAsync(create.Email);
-            //  add user to IdentityUserRole
-            var addUserToRole = await _userManager.AddToRoleAsync(userCreated, role);
-
-            #region Convert to DTO
-
-            var userInfo = new AppIdentityUserDTO
-            {
-                Id = userCreated.Id,
-                FullName = userCreated.UserName,
-                Email = create.Email,
-                Role = role
-            };
-
-            #endregion
-
-            return userInfo;
-        }
-
-        #endregion
-
-        #region Admin
-
-        /*
-         * this is repository for create admin user, uncomment just for create admin, and when you
-         * make deploy delete this method
-         * 
-         * 
-
-        public async Task<AppIdentityUserDTO> CreateAdminAsync(CreateAppIdentityUserDTO create)
-        {
-            //  take the appsetting value to role and asign to a var
-            string role = "SuperAdminMasterOwner";
-            //  if user send some role, change the object value to null, cero, nothing
-            create.RoleName = "";
-
-            #region Convert to Identity class
-
-            var user = new AppIdentityUser
-            {
-                FullName = create.FullName,
-                Email = create.Email,
-                UserName = create.Email,
-                PhoneNumber = create.Phone,
-                //  add default role
-                Role = role
-            };
-
-            #endregion
-
-            var result = await _userManager.CreateAsync(user, create.Password);
-            if (!result.Succeeded)
-                throw new ArgumentNullException(nameof(result));
-
-            //  find the user to add role and return the id
-            var userCreated = await _userManager.FindByEmailAsync(create.Email);
-
-            //  create admin role, when the role of admin is created this line can by comment
-            await _roleManager.CreateAsync(new IdentityRole(role));
-            //  add user to IdentityUserRole
-            var addUserToRole = await _userManager.AddToRoleAsync(userCreated, role);
-
-            #region Convert to DTO
-
-            var userInfo = new AppIdentityUserDTO
-            {
-                Id = userCreated.Id,
-                FullName = userCreated.UserName,
-                Email = create.Email,
-                Role = role
-            };
-
-            #endregion
-
-            return userInfo;
-        }
-
-        */
-
-        #endregion
-
-        #endregion
-
-        #region Update's
-
-
-
         #endregion
 
         #region Delete
@@ -253,10 +140,6 @@ namespace DomainCore.Core.Reps.Identity
             //  find the user with this Id
             var user = await _userManager.FindByIdAsync(authUserId);
             if (user == null)
-                return false;
-
-            //  confirm if the user try delete is'nt admin 
-            if (user.Role == "SuperAdminMasterOwner")
                 return false;
 
             //  remove this client on stripe and subsccription for this client for now just is  true

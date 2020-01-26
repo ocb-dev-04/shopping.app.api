@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using DomainCore.Data.Entities.Identity;
 using DomainCore.Data.Entities.App;
 
@@ -16,10 +17,10 @@ namespace DomainCore.Data.DataBaseContext
 
         #region DbSet's
 
-        // admin entities
         public DbSet<Products> Products { get; set; }
         public DbSet<Sellers> Sellers { get; set; }
         public DbSet<ProfileInfo> ProfileInfo { get; set; }
+        public DbSet<Cart> Cart { get; set; }
 
         #endregion
     }

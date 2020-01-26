@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Text;
+using System.Reflection;
+using System.IO;
+
+using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using DomainCore.Data.DataBaseContext;
 using DomainCore.Data.Entities.Identity;
 using DomainCore.Core.Interfaces.Identity;
 using DomainCore.Core.Reps.Identity;
-using Swashbuckle.AspNetCore.Swagger;
+using DomainCore.Core.Reps.App;
+using DomainCore.Core.Interfaces.App;
 
 namespace ApiCore.ConfigServices
 {
@@ -24,6 +30,15 @@ namespace ApiCore.ConfigServices
             #region Identity DI
 
             services.AddScoped<IIdentityUserRep, IdentityUserRep>();
+            services.AddScoped<IProfileInfosRep, ProfileRep>();
+
+            #endregion
+
+            #region App DI
+
+            services.AddScoped<ICartRep, CartRep>();
+            services.AddScoped<IProductsRep, ProductsRep>();
+            services.AddScoped<ISellersRep, SellersRep>();
 
             #endregion
         }
@@ -37,8 +52,12 @@ namespace ApiCore.ConfigServices
             IConfiguration Configuration)
         {
             //  config context to DataBase
+            //services.AddDbContext<AppDbContext>(
+            //    option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // config context to test database
             services.AddDbContext<AppDbContext>(
-                option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                option => option.UseInMemoryDatabase("ShopAPI_DB"));
 
             //  identity config (to create users)
             services.AddIdentity<AppIdentityUser, IdentityRole>(
@@ -96,31 +115,26 @@ namespace ApiCore.ConfigServices
 
         #region AddSwagger
 
-        public static void AddSwagger(this IServiceCollection services)
-        //=> services.AddSwaggerGen(c =>
-        //    {
-        //        c.SwaggerDoc("v1", new OpenApiInfo
-        //        {
-        //            Title = "Employee API",
-        //            Version = "v1",
-        //            Description = "An API to perform Employee operations",
-        //            TermsOfService = new Uri("https://example.com/terms"),
-        //            Contact = new OpenApiContact
-        //            {
-        //                Name = "John Walkner",
-        //                Email = "John.Walkner@gmail.com",
-        //                Url = new Uri("https://twitter.com/jwalkner"),
-        //            },
-        //            License = new OpenApiLicense
-        //            {
-        //                Name = "Employee API LICX",
-        //                Url = new Uri("https://example.com/license"),
-        //            }
-        //        });
-        //    });
-        => services.AddSwaggerGen(c =>
-            c.SwaggerDoc("v1", new Info { Title = "Shop App - API", Version = "v1", Description = "Breve descripcion de la API en si" })
-            );
+        public static void AddLocalSwagger(this IServiceCollection services)
+            => services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Title = "Shop API",
+                        Version = "v1",
+                        Description = "API para manejo de una tienda en linea",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Oscar Chavez",
+                            Email = "oscarchb04@gmail.com",
+                            Url = new Uri("https://github.com/ocb-dev-04"),
+                        }
+                    });
+
+                    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    c.IncludeXmlComments(xmlPath);
+                });
 
         #endregion
     }

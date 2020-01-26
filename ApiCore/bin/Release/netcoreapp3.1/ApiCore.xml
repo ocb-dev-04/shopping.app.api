@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiCore</name>
+    </assembly>
+    <members>
+        <member name="M:ApiCore.Controllers.CartController.GetAll">
+            <summary>
+            AUTORIZADO. Acede a todos los productos que el usuario "X" ha agregado al carrito.
+            </summary>
+            <returns></returns>
+            <response code="200">Accede a todos los productos que un usuario tiene en su carrito.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.CartController.AddProductsToCart(DomainCore.Core.EntitiesDTO.App.Cart.CreateCartDTO)">
+            <summary>
+            AUTORIZADO. Agrega los productos del usuario "X" al carrito.
+            </summary>
+            <returns></returns>
+            <response code="200">Agrega productos al carrito de el usuario logeado.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.CartController.UpdateProductsInCart(System.Int32,DomainCore.Core.EntitiesDTO.App.Cart.UpdateCartDTO)">
+            <summary>
+            AUTORIZADO. Actualiza un productos del usuario "X" en el carrito.
+            </summary>
+            <returns></returns>
+            <response code="200">Actualiza un productos que un usuario tiene en su carrito.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.CartController.DeleteProductsInCart(System.Int32)">
+            <summary>
+            AUTORIZADO. Elimina un solo productos del usuario "X" del carrito.
+            </summary>
+            <returns></returns>
+            <response code="200">Elimina un productos que un usuario tiene en su carrito.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.CartController.DeleteAllProductsInCart(System.Int32)">
+            <summary>
+            AUTORIZADO. Vacia el carrito.
+            </summary>
+            <returns></returns>
+            <response code="200">Limpia el carrito del usuario.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.AccountsController.GetById">
+            <summary>
+            AUTORIZADO. Accede a la informacion basica del usuario logeado en ese momento. En base a su JWT.
+            </summary>
+            <returns></returns>
+            <response code="200">Retorna un JWT.</response>
+            <response code="400">Esas credenciales no son validas.</response>
+            <response code="401">No autorizado.</response>  
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.AccountsController.CreateUser(DomainCore.Core.EntitiesDTO.Identity.CreateAppIdentityUserDTO)">
+            <summary>
+            PUBLICO. Registro de usuarios nuevos.
+            </summary>
+            <param name="create"></param>
+            <returns></returns>
+            <response code="200">Retorna un usuario ya creado.</response>
+            <response code="400">Los datos ingresados no son validos.</response>
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.AccountsController.DeleteUser">
+            <summary>
+            AUTORIZADO. Borrar(deshabilitar) un usuario previamente registrado.
+            </summary>
+            <returns></returns>
+            <response code="200">Borro o deshabilito el usuario exitosamente.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.AuthController.LoginAndToken(DomainCore.Core.EntitiesDTO.Identity.Login)">
+            <summary>
+            PUBLICO. Endpoint para acceder y por ende solicitar un JWT. (JWT para web, vence en horas)
+            </summary>
+            <param name="createWebToken"></param>
+            <returns></returns>
+            <response code="200">El logeo fue un exito y se trae un token.</response>
+            <response code="400">Esas credenciales no son validas.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.AuthController.LoginAndTokenFixed(DomainCore.Core.EntitiesDTO.Identity.Login)">
+            <summary>
+            PUBLICO. Endpoint para acceder y por ende solicitar un JWT. Endpoint para acceder y por ende solicitar un JWT. (JWT para web, vence en horas)
+            </summary>
+            <param name="createFixedToken"></param>
+            <returns></returns>
+            <response code="200">El logeo fue exitoso y trajo un token.</response>
+            <response code="400">Esas credenciales no son validas.</response>
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.ProfilesController.GetById">
+            <summary>
+            AUTORIZADO. Accede a la informacion de usuario (mediante JWT)
+            </summary>
+            <returns></returns>
+            <response code="200">Accede a la informacion basica de un usuario.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.ProfilesController.CreateUser(DomainCore.Core.EntitiesDTO.App.ProfileInfo.CreateProfileInfoDTO)">
+            <summary>
+            AUTORIZADO. Crea la informacion de un usuario (en base a JWT)
+            </summary>
+            <param name="create"></param>
+            <returns></returns>
+            <response code="200">Crear la informacion basica de un usuario.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.ProfilesController.UpdateUser(DomainCore.Core.EntitiesDTO.App.ProfileInfo.UpdateProfileInfoDTO)">
+            <summary>
+            AUTORIZADO. Actualiza la informacion de un usuario (en base a JWT)
+            </summary>
+            <param name="update"></param>
+            <returns></returns>
+            <response code="200">Actualiza la informacion basica de un usuario.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.Identity.ProfilesController.DeleteUser">
+            <summary>
+            AUTORIZADO. Borra la informacion de un usuario (en base a JWT)
+            </summary>
+            <returns></returns>
+            <response code="200">Borra la informacion basica de un usuario.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.GetAll">
+            <summary>
+            AUTORIZADO. Accede a todos los productos.
+            </summary>
+            <returns></returns>
+            <response code="200">Accede a TODOS los productos de los vendedores.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.GetByName(System.String)">
+            <summary>
+            AUTORIZADO. Accede a todos los productos que tengan en comun el nombre.
+            </summary>
+            <param name="productName"></param>
+            <returns></returns>
+            <response code="200">Accede a TODOS los productos de los vendedores que tengan en comun el nombre.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.GetById(System.Int32)">
+            <summary>
+            AUTORIZADO. Accede al producto que pertenece el ID enviado en la ruta.
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+            <response code="200">Accede al producto con el ID especificado.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.CreateProducts(DomainCore.Core.EntitiesDTO.App.Products.CreateProductsDTO)">
+            <summary>
+            AUTORIZADO. Crea un producto, para su venta.
+            </summary>
+            <param name="create"></param>
+            <returns></returns>
+            <response code="200">Crea un producto.</response>
+            <response code="400">Los datos no son validos.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.UpdateProducts(System.Int32,DomainCore.Core.EntitiesDTO.App.Products.UpdateProductsDTO)">
+            <summary>
+            AUTORIZADO. Actualiza un producto.
+            </summary>
+            <param name="productId"></param>
+            <param name="update"></param>
+            <returns></returns>
+            <response code="200">Actualiza un producto.</response>
+            <response code="400">Los datos no son validos.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.ProductsController.DeleteProducts(System.Int32)">
+            <summary>
+            AUTORIZADO. Borrar un producto en base a su ID.
+            </summary>
+            <param name="productId"></param>
+            <returns></returns>
+            <response code="200">Elimina un producto.</response>
+            <response code="400">Los datos no son validos.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.SellersController.GetAll">
+            <summary>
+            AUTORIZADO. Accede a todos los vendedores disponibles.
+            </summary>
+            <returns></returns>
+            <response code="200">Accede a todos los vendedores registrados.</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.SellersController.GetById(System.Int32)">
+            <summary>
+            AUTORIZADO. Buscar vendedor por su ID
+            </summary>
+            <param name="sellerId"></param>
+            <returns></returns>
+            <response code="200">Accede a un vendedor por ID</response>
+            <response code="404">No encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.SellersController.CreateSellers(DomainCore.Core.EntitiesDTO.App.Sellers.CreateSellersDTO)">
+            <summary>
+            AUTORIZADO. Crear vendedor. El userId se toma del JWT.
+            </summary>
+            <param name="create"></param>
+            <returns></returns>
+            <response code="200">Crea un vendedor en base a un usuario registrado.</response>
+            <response code="400">Datos no son validos.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.SellersController.UpdateSellers(System.Int32,DomainCore.Core.EntitiesDTO.App.Sellers.UpdateSellersDTO)">
+            <summary>
+            AUTORIZADO. Actualizar informacion de un vendedor.
+            </summary>
+            <param name="sellerId"></param>
+            <param name="update"></param>
+            <returns></returns>
+            <response code="200">Actualiza un vendedor en base a un usuario registrado.</response>
+            <response code="400">Datos no son validos.</response>
+            <response code="404">Vendedor no encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+        <member name="M:ApiCore.Controllers.SellersController.DeleteSellers(System.Int32)">
+            <summary>
+            AUTORIZADO. Eliminar informacion como vendedor.
+            </summary>
+            <param name="sellerId"></param>
+            <returns></returns>
+            <response code="200">Elimina(Desabilita) un vendedor en base a un usuario registrado.</response>
+            <response code="404">Vendedor no encontrado.</response>
+            <response code="401">No autorizado.</response> 
+        </member>
+    </members>
+</doc>

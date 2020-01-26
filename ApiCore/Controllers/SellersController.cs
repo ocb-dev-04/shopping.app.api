@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
@@ -15,6 +12,7 @@ using DomainCore.Core.EntitiesDTO.App.Sellers;
 namespace ApiCore.Controllers
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Produces("application/json")]
     [Route("v1/api/[controller]")]
     [ApiController]
     public class SellersController : ControllerBase
@@ -38,11 +36,19 @@ namespace ApiCore.Controllers
 
         #endregion
 
-        #region Methods
-
         #region Get's methods
 
-        [HttpGet()]
+        /// <summary>
+        /// AUTORIZADO. Accede a todos los vendedores disponibles.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Accede a todos los vendedores registrados.</response>
+        /// <response code="404">No encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<IEnumerable<SellersDTO>>> GetAll()
         {
             var response = await _sellersRep.GetAllAsync();
@@ -52,7 +58,18 @@ namespace ApiCore.Controllers
             return Ok(response);
         }
 
-        [HttpGet("seller-id={sellerId}")]
+        /// <summary>
+        /// AUTORIZADO. Buscar vendedor por su ID
+        /// </summary>
+        /// <param name="sellerId"></param>
+        /// <returns></returns>
+        /// <response code="200">Accede a un vendedor por ID</response>
+        /// <response code="404">No encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
+        [HttpGet("seller_id={sellerId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<SellersDTO>> GetById([FromRoute] int sellerId)
         {
             var response = await _sellersRep.GetByIdAsync(sellerId);
@@ -66,7 +83,18 @@ namespace ApiCore.Controllers
 
         #region CRUD
 
+        /// <summary>
+        /// AUTORIZADO. Crear vendedor. El userId se toma del JWT.
+        /// </summary>
+        /// <param name="create"></param>
+        /// <returns></returns>
+        /// <response code="200">Crea un vendedor en base a un usuario registrado.</response>
+        /// <response code="400">Datos no son validos.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
         public async Task<ActionResult<SellersDTO>> CreateSellers([FromBody] CreateSellersDTO create)
         {
             if (!ModelState.IsValid)
@@ -79,8 +107,22 @@ namespace ApiCore.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// AUTORIZADO. Actualizar informacion de un vendedor.
+        /// </summary>
+        /// <param name="sellerId"></param>
+        /// <param name="update"></param>
+        /// <returns></returns>
+        /// <response code="200">Actualiza un vendedor en base a un usuario registrado.</response>
+        /// <response code="400">Datos no son validos.</response>
+        /// <response code="404">Vendedor no encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpPut]
-        [Route("seller-id={sellerId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
+        [Route("seller_id={sellerId}")]
         public async Task<IActionResult> UpdateSellers([FromRoute] int sellerId, [FromBody] UpdateSellersDTO update)
         {
             if (!ModelState.IsValid)
@@ -96,8 +138,19 @@ namespace ApiCore.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// AUTORIZADO. Eliminar informacion como vendedor.
+        /// </summary>
+        /// <param name="sellerId"></param>
+        /// <returns></returns>
+        /// <response code="200">Elimina(Desabilita) un vendedor en base a un usuario registrado.</response>
+        /// <response code="404">Vendedor no encontrado.</response>
+        /// <response code="401">No autorizado.</response> 
         [HttpDelete]
-        [Route("seller-id={sellerId}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(401)]
+        [Route("seller_id={sellerId}")]
         public async Task<IActionResult> DeleteSellers([FromRoute] int sellerId)
         {
             var response = await _sellersRep.DeleteAsync(sellerId);
@@ -106,8 +159,6 @@ namespace ApiCore.Controllers
 
             return Ok();
         }
-
-        #endregion
 
         #endregion
     }
