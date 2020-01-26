@@ -36,3 +36,25 @@ En ese mismo orden en el ApiCore.csproj casi al final hay unas lineas de codigo 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
+
+# DomainCore DLL Encargada de los procesos y manejo de mapeadores, entidades, dto, repositorios, interfaces y demas.
+
+Algunos de los nugets que son requeridos por esta DLL son:
+
+# AutoMapper 8.1.1
+Ene ste caso solo usaremos AutoMapper com otal, ya que solo lo necesitamos para crear los mappers y mapear las respectivas entidades con los DTO.
+
+# Microsoft.AspNetCore.Identity 2.2.0
+El nuget creado por Microsoft para el manejo de usuarios, roles y demas.
+Se usa la version 2.2.0 porque hasta el momento no han hecho actualizaciones. Pero aun funciona de maravilla.
+
+# Microsoft.AspNetCore.Identity.EntityFrameworkCore 2.2.0
+Para vincularIdentity con Base de Datos no es solo hacer un DbSet y ya, sino que debemos heredar algunos metodos, este nuget nos ayuda con eso.
+
+# Microsoft.EntityFrameworkCore 2.2.4
+# Microsoft.EntityFrameworkCore.SqlServer 2.2.4
+ORM para el manejo de datos desde codigo, se usa tanto apra CodeFirst como para DataBaseFirst, de la mano de LinQ, es un ORM maduro y con mucho poder.
+
+# Microsoft.IdentityModel.Tokens 5.5.0
+# System.IdentityModel.Tokens.Jwt 5.5.0
+Ambos son para el manejo de JWT en la aplicacion, validadciones, accesos y demas.
