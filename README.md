@@ -58,3 +58,31 @@ ORM para el manejo de datos desde codigo, se usa tanto apra CodeFirst como para 
 # Microsoft.IdentityModel.Tokens 5.5.0
 # System.IdentityModel.Tokens.Jwt 5.5.0
 Ambos son para el manejo de JWT en la aplicacion, validadciones, accesos y demas.
+
+# Correr en modo Debug
+Al ejecutar el comando dotnet run el modo debug esta activado por defecto, asi que con solo ese comando se ejecutara de esa manera.
+
+# Correr en modo Release
+Se utiliza el mismo comando solo que se le agrega una secuencia extra => dotnet run -c Release
+
+# Lista de librerias y dependencias
+
+1. AutoMapper, AutoMapper.Extensions.Microsoft.DependecyInjection
+Pagina oficial: https://automapper.org/
+Documentacion: https://automapper.readthedocs.io/en/latest/
+
+2. Microsoft.AspNetCore.Authentication.JwtBearer, Microsoft.EntityFrameworkCore.InMemory, Microsoft.Extensions.Logging.Debug
+Pagina oficial: https://dotnet.microsoft.com/apps/aspnet
+Documentacion: https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authentication.jwtbearer?view=aspnetcore-2.2&viewFallbackFrom=aspnetcore-3.1
+
+3. Swashbuckle.AspNetCore.Swagger
+URL del proyecto: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+Documentacion: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio
+
+4. Microsoft.AspNetCore.Identity, Microsoft.AspNetCore.Identity.EntityFrameworkCore, Microsoft.EntityFrameworkCore, Microsoft.EntityFrameworkCore.SqlServer
+Pagina principal: https://dotnet.microsoft.com/apps/aspnet
+Documentacion: https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity?view=aspnetcore-3.1
+
+5. Microsoft.IdentityModel.Tokens, System.IdentityModel.Tokens.Jwt
+URL del proyecto: https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet
+Documentacion: https://docs.microsoft.com/en-us/dotnet/api/microsoft.identitymodel.tokens?view=azure-dotnet
