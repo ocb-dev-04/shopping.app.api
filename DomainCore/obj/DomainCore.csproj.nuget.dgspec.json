@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj": {}
+    "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj": {
+    "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj",
         "projectName": "DomainCore",
-        "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj",
+        "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,6 +83,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

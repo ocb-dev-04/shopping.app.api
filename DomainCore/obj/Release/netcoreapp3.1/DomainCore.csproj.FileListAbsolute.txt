@@ -6,3 +6,11 @@ C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Release\netcorea
 C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Release\netcoreapp3.1\DomainCore.AssemblyInfo.cs
 C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Release\netcoreapp3.1\DomainCore.dll
 C:\Users\DELL\Fork_Git_Projects\shopping.app.api\DomainCore\obj\Release\netcoreapp3.1\DomainCore.pdb
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\bin\Release\netcoreapp3.1\DomainCore.deps.json
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\bin\Release\netcoreapp3.1\DomainCore.dll
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\bin\Release\netcoreapp3.1\DomainCore.pdb
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\obj\Release\netcoreapp3.1\DomainCore.csprojAssemblyReference.cache
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\obj\Release\netcoreapp3.1\DomainCore.AssemblyInfoInputs.cache
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\obj\Release\netcoreapp3.1\DomainCore.AssemblyInfo.cs
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\obj\Release\netcoreapp3.1\DomainCore.dll
+C:\Users\DELL\Fork_Git_Projects\APIExample\DomainCore\obj\Release\netcoreapp3.1\DomainCore.pdb

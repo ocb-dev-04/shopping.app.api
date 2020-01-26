@@ -8473,11 +8473,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\ApiCore\\ApiCore.csproj",
       "projectName": "ApiCore",
-      "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\ApiCore.csproj",
+      "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\ApiCore\\ApiCore.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\ApiCore\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\ApiCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8493,8 +8493,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj": {
-              "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\shopping.app.api\\DomainCore\\DomainCore.csproj"
+            "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj": {
+              "projectPath": "C:\\Users\\DELL\\Fork_Git_Projects\\APIExample\\DomainCore\\DomainCore.csproj"
             }
           }
         }
